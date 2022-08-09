@@ -42,7 +42,6 @@
 - [Hướng dẫn cấu hình LVM một số trường hợp thường sử dụng](#huong-dan-cau-hinh-lvm-mot-so-truong-hop-thuong-su-dung)
   - [Trường hợp 1: Tăng dung lượng cho disk chứa OS và mở rộng dung lượng cho phân vùng chứa `root` (`/`)](#truong-hop-1-tang-dung-luong-cho-disk-chua-os-va-mo-rong-dung-luong-cho-phan-vung-chua-root-)
   - [Trường hợp 2: Tăng dung lượng phân vùng `root` (`/`) bằng cách gắn thêm disk mới](#truong-hop-2-tang-dung-luong-phan-vung-root-bang-cach-gan-them-disk-moi)
-- [[Quay lại trang chính](../README.md)](#quay-lai-trang-chinh..readme.md)
 <!--/TOC-->
 
 # 1. Giới thiệu về LVM
@@ -97,7 +96,7 @@ Thực hiện add thêm **Hard Disk** cho máy ảo
 Khởi động máy ảo và kiểm tra trạng thái ổ đĩa bằng lệnh:
 
 <pre>
-[admin@localhost ~]$ lsblk
+[root@localhost admin]# lsblk
 </pre>
 
 <p align="center"><img src="/img/4.png"></p>
