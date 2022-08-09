@@ -704,23 +704,144 @@ Như vậy, ta đã chuyển chuyển dữ liệu từ `sdb1` sang `sdc1` thành
 <p align="center"><img src="/img/75.png"></p>
 
 # Hướng dẫn cấu hình LVM một số trườn hợp thường sử dụng
-## Trường hợp 1: Tăng dung lượng cho disk chứa OS và mở rộng dung lượng cho phân vùng chứa root (/)
+## Trường hợp 1: Tăng dung lượng cho disk chứa OS và mở rộng dung lượng cho phân vùng chứa `root` (`/`)
+***Bước 1: Tăng thêm dung lượng mới cho disk.***
+
 Server hiện tại có 01 disk với dung lượng 20GB
 
 <p align="center"><img src="/img/76.png"></p>
 
-Partition chứa `root` (/) là `sda2` hiện tại có dung lượng 19GB. Logical Volume chứa root (/) là `centos_centos--server-root` có dung lượng 17GB:
+Partition chứa `root` (`/`) là `sda2` hiện tại có dung lượng 19GB. Logical Volume chứa `root` (`/`) là `centos_centos--server-root` có dung lượng 17GB:
 
 <p align="center"><img src="/img/77.png"></p>
 
-Thực hiện tăng dung lượng cho disk
+Thực hiện tăng dung lượng cho disk thêm 30G. Sau đó tăng dung lượng phân vùng chứa `root` (`/`) thêm 30GB.
 
+Sau khi tăng dung lượng cho disk, lúc này disk có dung lượng 50GB:
 
+<p align="center"><img src="/img/78.png"></p>
 
+Kiểm tra bằng lệnh `lsblk`, disk `sda` đã nhận dung lượng mới là 50GB:
 
+<p align="center"><img src="/img/79.png"></p>
 
+***Bước 2: Tăng dung lượng cho partition.***
 
+Cần cài đặt gói `cloud-utils-growpart` (nếu server chưa có) để mở rộng phân vùng bằng lệnh cài đặt sau:
 
+<pre>
+[root@centos-server ~]# yum install cloud-utils-growpart
+</pre>
+
+Mở rộng dung lượng cho partition `sda2` đang chứa `root` (`/`) bằng lệnh:
+
+<pre>
+[root@centos-server ~]# growpart /dev/sda 2
+</pre>
+
+Trong câu lệnh trên, `/dev/sda` là tên disk, số `2` là số thứ tự partition chứa `root` (`/`).
+
+<p align="center"><img src="/img/80.png"></p>
+
+Kiểm tra lại dung lượng của `sda2` lúc này đã tăng lên thêm 30GB (thành 49GB):
+
+<pre>
+[root@centos-server ~]# lsblk
+</pre>
+
+<p align="center"><img src="/img/81.png"></p>
+
+***Bước 3: Tăng dung lượng cho Physical Volume.***
+
+Kiểm tra dung lượng trống của Physical Volume `/dev/sda2` trước khi tăng dung lượng:
+
+<pre>
+[root@centos-server ~]# pvs
+</pre>
+
+<p align="center"><img src="/img/82.png"></p>
+
+Tăng dung lượng cho Physical Volume `/dev/sda2` bằng lệnh sau:
+
+<pre>
+[root@centos-server ~]# pvresize /dev/sda2
+</pre>
+
+<p align="center"><img src="/img/83.png"></p>
+
+Kiểm tra dung lượng trống của Physical Volume sau khi tăng đã thêm 30GB cột **PFree**:
+
+<pre>
+[root@centos-server ~]# pvs
+</pre>
+
+<p align="center"><img src="/img/84.png"></p>
+
+***Bước 4: Tăng dung lượng Logical Volume.***
+
+Kiểm tra dung lượng của Volume Group đang trống 88.5GB => Khả dụng để tăng dung lượng Logical Volume chứa `root` (`/`) :
+
+<pre>
+[root@centos-server ~]# vgs
+</pre>
+
+<p align="center"><img src="/img/85.png"></p>
+
+Trên server hiện có 02 Logical Volume, kiểm tra bằng lệnh sau:
+
+<pre>
+[root@centos-server ~]# lvs
+</pre>
+
+<p align="center"><img src="/img/86.png"></p>
+
+Mở rộng dung lượng cho Logical Volume chứa `root` (`/`) với toàn bộ dung lượng khả dụng hiện có:
+
+<pre>
+[root@centos-server ~]# lvextend -l +100%FREE /dev/centos_centos-server/root
+</pre>
+
+Trong câu lệnh trên, `/dev` là path trỏ tới disk, `/dev/centos_centos-server` là path trỏ tới Logical Volume Group, `/dev/centos_centos-server/root` là path trỏ tới Logical Volume `root` chứa `root` (`/`).
+
+<p align="center"><img src="/img/87.png"></p>
+
+Kiểm tra lại Logical Volume:
+
+<pre>
+[root@centos-server ~]# lvs
+</pre>
+
+Dung lượng đã được tăng thêm 30GB thành 47GB so với ban đầu là 17GB
+
+<p align="center"><img src="/img/88.png"></p>
+
+***Bước 5: Cập nhật lại filesystem.***
+
+Kiểm tra định dạng filesystem mà `root` (`/`) đang sử dụng:
+
+<pre>
+[root@centos-server ~]# df -HT
+</pre>
+
+Cập nhật filesystem để `root` (`/`) nhận dung thêm dung lượng mới. Do `root` (`/`) đang sử dụng định dạng `xfs` nên sử dụng lệnh sau:
+
+<pre>
+[root@centos-server ~]# xfs_growfs /dev/mapper/centos_centos--server-root
+</pre>
+
+<p align="center"><img src="/img/89.png"></p>
+
+Kiểm tra lại, dung lượng của `root` (`/`) lúc này đã được tăng lên thành 47GB (ban đầu 17GB).
+
+<pre>
+[root@centos-server ~]# lsblk
+</pre>
+
+<p align="center"><img src="/img/90.png"></p>
+
+Dung lượng thực tế sử dụng:
+
+<p align="center"><img src="/img/91.png"></p>
 
 
 
