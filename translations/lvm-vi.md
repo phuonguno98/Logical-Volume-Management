@@ -854,9 +854,13 @@ Kiểm tra bằng lệnh, server đã nhận thêm 01 disk mới `sdb` có dung 
 
 <p align="center"><img src="/img/93.png"></p>
 
+***Bước 2: Tạo partition mới.***
+
 Tạo partition mới `sdb1` cho disk `sda`:
 
 <p align="center"><img src="/img/94.png"></p>
+
+***Bước 3: Tạo Physical Volume.***
 
 Tạo mới Physical Volume cho `sdb1`:
 
@@ -874,6 +878,8 @@ Kiểm tra lại Physical Volume vừa tạo:
 
 <p align="center"><img src="/img/96.png"></p>
 
+***Bước 4: Mở rộng dung lượng Volume Group.***
+
 Mở rộng VG `centos_centos-server` bằng cách thêm PV `sdb1` vào:
 
 <pre>
@@ -890,6 +896,8 @@ Sau khi mở rộng, ta thấy VG `centos_centos-server` nằm trên 02 PV `sda2
 
 <p align="center"><img src="/img/98.png"></p>
 
+***Bước 5: Mở rộng dung lượng Logical Volume chứa `root`.***
+
 Mở rộng LV phân vùng chứa `root` (`/`):
 
 <pre>
@@ -897,6 +905,8 @@ Mở rộng LV phân vùng chứa `root` (`/`):
 </pre>
 
 <p align="center"><img src="/img/99.png"></p>
+
+***Bước 6: Cập nhật lại filesystem.***
 
 Cập nhật filesystem để nhận dung thêm dung lượng mới. Do phân vùng `root` (`/`) sử dụng định dạng `xfs` nên sử dụng lệnh sau:
 
@@ -913,39 +923,5 @@ Kiểm tra lại, dung lượng của `root` (`/`) lúc này đã được tăng
 </pre>
 
 <p align="center"><img src="/img/101.png"></p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # [Quay lại trang chính](../README.md)
