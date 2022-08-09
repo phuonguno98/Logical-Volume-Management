@@ -779,7 +779,7 @@ Kiểm tra dung lượng trống của Physical Volume sau khi tăng đã thêm 
 
 ***Bước 4: Tăng dung lượng Logical Volume.***
 
-Kiểm tra dung lượng của Volume Group đang trống 88.5GB => Khả dụng để tăng dung lượng Logical Volume chứa `root` (`/`) :
+Kiểm tra dung lượng của Volume Group đang trống 30GB (cột **VFree**) => Khả dụng để tăng dung lượng Logical Volume chứa `root` (`/`) :
 
 <pre>
 [root@centos-server ~]# vgs
@@ -843,6 +843,76 @@ Dung lượng thực tế sử dụng:
 
 <p align="center"><img src="/img/91.png"></p>
 
+## Trường hợp 2: Tăng dung lượng phân vùng `root` (`/`) bằng cách gắn thêm disk mới
+***Bước 1: Gắn thêm disk mới.***
+
+Gắn thêm 01 disk mới mới 20GB cho server:
+
+<p align="center"><img src="/img/92.png"></p>
+
+Kiểm tra bằng lệnh, server đã nhận thêm 01 disk mới `sdb` có dung lượng 20GB:
+
+<p align="center"><img src="/img/93.png"></p>
+
+Tạo partition mới `sdb1` cho disk `sda`:
+
+<p align="center"><img src="/img/94.png"></p>
+
+Tạo mới Physical Volume cho `sdb1`:
+
+<pre>
+[root@centos-server ~]# pvcreate /dev/sdb1
+</pre>
+
+<p align="center"><img src="/img/95.png"></p>
+
+Kiểm tra lại Physical Volume vừa tạo:
+
+<pre>
+[root@centos-server ~]# pvs
+</pre>
+
+<p align="center"><img src="/img/96.png"></p>
+
+Mở rộng VG `centos_centos-server` bằng cách thêm PV `sdb1` vào:
+
+<pre>
+[root@centos-server ~]# vgextend centos_centos-server /dev/sdb1
+</pre>
+
+<p align="center"><img src="/img/97.png"></p>
+
+Sau khi mở rộng, ta thấy VG `centos_centos-server` nằm trên 02 PV `sda2` và `sdb1`:
+
+<pre>
+[root@centos-server ~]# pvs
+</pre>
+
+<p align="center"><img src="/img/98.png"></p>
+
+Mở rộng LV phân vùng chứa `root` (`/`):
+
+<pre>
+[root@centos-server ~]# lvextend -l +100%FREE /dev/mapper/centos_centos--server-root
+</pre>
+
+<p align="center"><img src="/img/99.png"></p>
+
+Cập nhật filesystem để nhận dung thêm dung lượng mới. Do phân vùng `root` (`/`) sử dụng định dạng `xfs` nên sử dụng lệnh sau:
+
+<pre>
+[root@centos-server ~]# xfs_growfs /dev/mapper/centos_centos--server-root
+</pre>
+
+<p align="center"><img src="/img/100.png"></p>
+
+Kiểm tra lại, dung lượng của `root` (`/`) lúc này đã được tăng lên thành 66GB (ban đầu 47GB) và nằm trên hai LV `sda2` và `sdb1`.
+
+<pre>
+[root@centos-server ~]# df -hT
+</pre>
+
+<p align="center"><img src="/img/101.png"></p>
 
 
 
@@ -851,4 +921,31 @@ Dung lượng thực tế sử dụng:
 
 
 
-# [Back to main page](../README.md)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# [Quay lại trang chính](../README.md)
