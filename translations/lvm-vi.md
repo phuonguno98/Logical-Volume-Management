@@ -110,6 +110,8 @@ Tạo **Partition** cho `sdb`, sử dụng lệnh:
 [root@localhost admin]# fdisk /dev/sdb
 </pre>
 
+Sử dụng lần lượt các lệnh như trong hình.
+
 <p align="center"><img src="/img/5.png"></p>
 
 Đã tạo thành công **Partition** LVM `sdb1` có dung lượng 20G. Thực hiện tương tự đối với `sdc`. Kết quả sau khi tạo **Partition**:
@@ -150,7 +152,7 @@ Hiển thị thông tin chi tiết **Physical Volume** `/dev/sdb1` bằng lệnh
 <p align="center"><img src="/img/10.png"></p>
 
 ## 2.4. Tạo Volume Group
-Để tạo một **Volume Group** mới có tên “vg001” từ các PV `sdb1` và `sdc1` sử dụng lệnh sau:
+Để tạo một **Volume Group** mới có tên “**vg001**” từ các PV `sdb1` và `sdc1` sử dụng lệnh sau:
 
 <pre>
 [root@localhost admin]# vgcreate vg001 /dev/sdb1 /dev/sdc1
@@ -922,9 +924,15 @@ Cập nhật filesystem để nhận dung thêm dung lượng mới. Do phân v�
 Kiểm tra lại, dung lượng của `root` (`/`) lúc này đã được tăng lên thành 66GB (ban đầu 47GB) và nằm trên hai LV `sda2` và `sdb1`.
 
 <pre>
-[root@centos-server ~]# df -hT
+[root@centos-server ~]# lsblk
 </pre>
 
 <p align="center"><img src="/img/101.png"></p>
+
+<pre>
+[root@centos-server ~]# df -hT
+</pre>
+
+<p align="center"><img src="/img/102.png"></p>
 
 # [Quay lại trang chính](../README.md)
