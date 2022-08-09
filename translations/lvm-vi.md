@@ -44,6 +44,7 @@
   - [Trường hợp 1: Tăng dung lượng cho disk chứa OS và mở rộng dung lượng cho phân vùng chứa `root`](#trường-hợp-1-tăng-dung-lượng-cho-disk-chứa-os-và-mở-rộng-dung-lượng-cho-phân-vùng-chứa-root)
   - [Trường hợp 2: Tăng dung lượng phân vùng `root` (`/`) bằng cách gắn thêm disk mới](#trường-hợp-2-tăng-dung-lượng-phân-vùng-root--bằng-cách-gắn-thêm-disk-mới)
 - [Quay lại trang chính](#quay-lại-trang-chính)
+  - [License](#license)
 <!--/TOC-->
 
 # 1. Giới thiệu về LVM
@@ -936,3 +937,7 @@ Kiểm tra lại, dung lượng của `root` (`/`) lúc này đã được tăng
 <p align="center"><img src="/img/102.png"></p>
 
 # [Quay lại trang chính](../README.md)
+
+## License
+
+[UNO](LICENSE.md) &copy;
