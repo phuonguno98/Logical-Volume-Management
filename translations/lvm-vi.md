@@ -1,5 +1,4 @@
 ﻿<p align="center">
-    
     <a href="https://github.com/phuonguno98/Logical-Volume-Management">	
         <img src="/img/lvm.webp" alt="Logical Volume Management">
     </a>
@@ -7,6 +6,41 @@
 
 
 ## Nội dung
+- [Nội dung](#nội-dung)
+- [1. Giới thiệu về LVM](#1-giới-thiệu-về-lvm)
+  - [1.1. Một số ứng dụng của LVM](#11-một-số-ứng-dụng-của-lvm)
+  - [1.2. Cấu trúc của LVM](#12-cấu-trúc-của-lvm)
+  - [1.3. Các thành phần của LVM](#13-các-thành-phần-của-lvm)
+- [2. Cài đặt và cấu hình LVM trên hệ điều hành CentOS 8](#2-cài-đặt-và-cấu-hình-lvm-trên-hệ-điều-hành-centos-8)
+  - [2.1. Tạo máy ảo CentOS và gắn thêm 3 ổ cứng ảo](#21-tạo-máy-ảo-centos-và-gắn-thêm-3-ổ-cứng-ảo)
+  - [2.2.Tạo các Partition cho các ổ đĩa mới](#22tạo-các-partition-cho-các-ổ-đĩa-mới)
+  - [2.3. Tạo Physical Volume](#23-tạo-physical-volume)
+  - [2.4. Tạo Volume Group](#24-tạo-volume-group)
+  - [2.5. Tạo Logical Volume](#25-tạo-logical-volume)
+  - [2.6. Tạo mount point và thực hiện mount LVM mới](#26-tạo-mount-point-và-thực-hiện-mount-lvm-mới)
+- [3. Mở rộng/thay đổi kích thước Logical Volume](#3-mở-rộngthay-đổi-kích-thước-logical-volume)
+  - [3.1. Mở rộng Volume Group](#31-mở-rộng-volume-group)
+  - [3.2. Tăng kích thước Logical Volume](#32-tăng-kích-thước-logical-volume)
+  - [3.3. Giảm dung lượng Logical Volume và Volume Group](#33-giảm-dung-lượng-logical-volume-và-volume-group)
+- [4. Auto-mount Logical Volume](#4-auto-mount-logical-volume)
+- [5. Snapshot và restore Logical Volume](#5-snapshot-và-restore-logical-volume)
+  - [5.1. Tạo snapshot Logical Volume](#51-tạo-snapshot-logical-volume)
+  - [5.2. Tăng thêm dung lượng cho snapshot](#52-tăng-thêm-dung-lượng-cho-snapshot)
+  - [5.3. Restore Logical Volume](#53-restore-logical-volume)
+- [6. Remove Logical Volume](#6-remove-logical-volume)
+- [7. Remove Volume Group](#7-remove-volume-group)
+- [8. Remove Physical Volume](#8-remove-physical-volume)
+- [9. LVM Thin Provisioning](#9-lvm-thin-provisioning)
+  - [9.1. Giới thiệu Thin Provisioning](#91-giới-thiệu-thin-provisioning)
+  - [9.2. Cấu hình Thin Provisioning](#92-cấu-hình-thin-provisioning)
+    - [9.2.1. Tạo Volume group](#921-tạo-volume-group)
+    - [9.2.2. Tạo thin pool](#922-tạo-thin-pool)
+    - [9.2.3. Tạo thin volume](#923-tạo-thin-volume)
+    - [9.2.4 Tạo filesystem và mount các volume](#924-tạo-filesystem-và-mount-các-volume)
+- [10. Tính năng Manage Multiple Logical Volume Management Disk sử dụng Striping I/O](#10-tính-năng-manage-multiple-logical-volume-management-disk-sử-dụng-striping-io)
+- [11. Tính năng LVM Migration](#11-tính-năng-lvm-migration)
+- [Back to main page](#back-to-main-page)
+
 
 
 ## 1. Giới thiệu về LVM
