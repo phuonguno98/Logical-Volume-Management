@@ -39,7 +39,7 @@
     - [9.2.4 Tạo filesystem và mount các volume](#9.2.4-tao-filesystem-va-mount-cac-volume)
 - [10. Tính năng Manage Multiple Logical Volume Management Disk sử dụng Striping I/O](#10.-tinh-nang-manage-multiple-logical-volume-management-disk-su-dung-striping-io)
 - [11. Tính năng LVM Migration](#11.-tinh-nang-lvm-migration)
-- [Hướng dẫn cấu hình LVM một số trườn hợp thường sử dụng](#huong-dan-cau-hinh-lvm-mot-so-truon-hop-thuong-su-dung)
+- [Hướng dẫn cấu hình LVM một số trường hợp thường sử dụng](#huong-dan-cau-hinh-lvm-mot-so-truong-hop-thuong-su-dung)
   - [Trường hợp 1: Tăng dung lượng cho disk chứa OS và mở rộng dung lượng cho phân vùng chứa `root` (`/`)](#truong-hop-1-tang-dung-luong-cho-disk-chua-os-va-mo-rong-dung-luong-cho-phan-vung-chua-root-)
   - [Trường hợp 2: Tăng dung lượng phân vùng `root` (`/`) bằng cách gắn thêm disk mới](#truong-hop-2-tang-dung-luong-phan-vung-root-bang-cach-gan-them-disk-moi)
 - [[Quay lại trang chính](../README.md)](#quay-lai-trang-chinh..readme.md)
@@ -705,7 +705,7 @@ Như vậy, ta đã chuyển chuyển dữ liệu từ `sdb1` sang `sdc1` thành
 
 <p align="center"><img src="/img/75.png"></p>
 
-# Hướng dẫn cấu hình LVM một số trườn hợp thường sử dụng
+# Hướng dẫn cấu hình LVM một số trường hợp thường sử dụng
 ## Trường hợp 1: Tăng dung lượng cho disk chứa OS và mở rộng dung lượng cho phân vùng chứa `root` (`/`)
 ***Bước 1: Tăng thêm dung lượng mới cho disk.***
 
