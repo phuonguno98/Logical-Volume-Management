@@ -1,11 +1,12 @@
 <div align="right">
-    <div><b>Language:</b> VI | <a href="../content/lvm-en.md">EN</a></div>
-    <div><i>Your language contributions are welcome!</i></div>
+  <div><b>Language:</b> VI | <a href="../content/lvm-en.md">EN</a></div>
+  <div><i>Your language contributions are welcome!</i></div>
 </div>
 <p align="center">
-    <a href="https://github.com/phuonguno98/Logical-Volume-Management">	
-        <img src="../img/lvm.webp" alt="Logical Volume Management" style="height: 70%; width: 70%">
-    </a>
+  <br/>
+  <a href="https://github.com/phuonguno98/Logical-Volume-Management">	
+      <img src="../img/lvm.webp" alt="Logical Volume Management" style="height: 70%; width: 70%">
+  </a>
 </p>
 
 
