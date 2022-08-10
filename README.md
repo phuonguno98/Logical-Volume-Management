@@ -1,6 +1,6 @@
 <p align="center">
     <br/>
-    <a href="https://github.com/phuonguno98/Logical-Volume-Management">	
+    <a href="https://phuonguno98.github.io/Logical-Volume-Management/">	
         <img src="./img/lvm.webp" alt="Logical Volume Management">
     </a>
 </p>
