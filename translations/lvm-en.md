@@ -16,4 +16,4 @@
 
 # License
 
-[UNO](../LICENSE.html) &copy;
+[UNO](../LICENSE.md) &copy;
