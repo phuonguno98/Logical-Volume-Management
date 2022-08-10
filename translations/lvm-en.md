@@ -16,4 +16,4 @@
 
 # License
 
-[UNO](LICENSE.md) &copy;
+[UNO](../LICENSE.md) &copy;
