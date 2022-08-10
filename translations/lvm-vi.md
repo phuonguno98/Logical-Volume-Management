@@ -944,4 +944,4 @@ Kiểm tra lại, dung lượng của `root` (`/`) lúc này đã được tăng
 
 # License
 
-[UNO](LICENSE.md) &copy;
+[UNO](./LICENSE.md) &copy;
