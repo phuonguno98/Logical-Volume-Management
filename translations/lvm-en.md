@@ -12,7 +12,7 @@
 
 # Not Available this time!
 
-[Trang chính](../README.md)
+[Main page](../README.md)
 
 # License
 
