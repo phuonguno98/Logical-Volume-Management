@@ -8,8 +8,8 @@
 
 ## Translations ([How to](translations/how-to.md))
 
-* [English](translations/lvm-en.md)
-* [Tiếng Việt](translations/lvm-vi.md)
+* [English](./translations/lvm-en.md)
+* [Tiếng Việt](./translations/lvm-vi.md)
 
 
 ## Author
