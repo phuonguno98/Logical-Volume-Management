@@ -862,7 +862,7 @@ Kiểm tra bằng lệnh, server đã nhận thêm 01 disk mới `sdb` có dung 
 
 ***Bước 2: Tạo partition mới.***
 
-Tạo partition mới `sdb1` cho disk `sda`:
+Tạo partition mới `sdb1` cho disk `sdb`:
 
 <p align="center"><img src="/img/94.png"></p>
 
