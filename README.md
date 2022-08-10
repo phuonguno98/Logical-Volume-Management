@@ -6,7 +6,7 @@
 </p>
 
 
-## Translations ([How to](translations/how-to.md))
+## Choose language to show content ([How to translations](translations/how-to.md))
 
 * [English](./translations/lvm-en.md)
 * [Tiếng Việt](./translations/lvm-vi.md)
