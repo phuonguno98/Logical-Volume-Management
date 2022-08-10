@@ -1,5 +1,6 @@
 <div align="right">
-  <div><a href="../README.md">Back to main page</a></div>
+  <div><a href="../README.html">Back to main page</a></div>
+  <br/>
 </div>
 
 ## Please put new translation markdown files here.
