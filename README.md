@@ -12,7 +12,7 @@
 * [Tiếng Việt](translations/lvm-vi.md)
 
 
-## Contribution
+## Author
 <div><b>Nguyễn Thanh Phương</b></div>
 Email: unovn.contact@gmail.com
 
