@@ -104,7 +104,7 @@ Khởi động máy ảo và kiểm tra trạng thái ổ đĩa bằng lệnh:
 
 <p align="center"><img src="/img/4.png"></p>
 
-## 2.2.Tạo các Partition cho các ổ đĩa mới
+## 2.2. Tạo các Partition cho các ổ đĩa mới
 Tạo **Partition** cho `sdb`, sử dụng lệnh:
 
 <pre>
