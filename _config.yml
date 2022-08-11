@@ -1,5 +1,3 @@
 title: Logical Volume Management
 theme: jekyll-theme-midnight
-header_pages:
-  - about.md
-  - portfolio.md
+show_excerpts: false
